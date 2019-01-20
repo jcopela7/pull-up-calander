@@ -13,6 +13,13 @@ exports.list_all_PullUps = function(req, res) {
   });
 };
 
+exports.submit_PullUps = function (reg,res){
+	var new_pullUp= new PullUps(req.body);
+	new_pullUp.save()
+		.then(item=>{
+			res.send("item saved to database")
+		});
+};
 
 // exports.create_a_pullUp = function(req, res) {
 //   var new_task = new Task(req.body);
