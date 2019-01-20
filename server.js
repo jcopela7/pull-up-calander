@@ -1,8 +1,8 @@
 var express = require('express'),
   app = express(),
-  port = process.env.PORT || 3001;
+  port = process.env.PORT || 3001,
   mongoose=require('mongoose'),
-  PullUps=require('./api/models/pullUpsModel')
+  PullUps=require('./api/models/pullUpsModel'),
   bodyParser = require('body-parser');
 
 // mongoose instance connection url connection
