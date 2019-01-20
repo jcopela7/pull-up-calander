@@ -79,7 +79,7 @@ class Table extends Component{
 				Footer:'Total: ' + sum[2]
 			}
 			]}
-			defaultPageSize={10}
+			defaultPageSize={30}
 			className="-striped -highlight"
 			/>
 			
