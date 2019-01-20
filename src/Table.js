@@ -29,6 +29,16 @@ class Table extends Component{
 
 	}
 
+	componentDidMount(){
+			fetch("/PullUps")
+				.then(res => res.json())
+				.then((data) => {
+					this.setState({
+						data: data
+					});
+				});
+		}
+
 	render(){
 		const data =this.state.data;
 		
@@ -76,6 +86,7 @@ class Table extends Component{
 			</div>
 		);
 	}
+
 }
 
 export default Table;
