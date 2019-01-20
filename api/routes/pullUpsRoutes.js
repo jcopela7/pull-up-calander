@@ -5,6 +5,9 @@ module.exports = function(app) {
   // pullUpsList Routes
   app.route('/PullUps')
     .get(pullUpsList.list_all_PullUps)
+
+  app.route('/PullUps_submit')
+  	.post(pullUpsList.submit_PullUps)
     //.post(pullUpsList.create_a_task);
 
 
