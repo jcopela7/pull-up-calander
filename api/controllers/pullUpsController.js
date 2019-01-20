@@ -13,8 +13,13 @@ exports.list_all_PullUps = function(req, res) {
   });
 };
 
-exports.submit_PullUps = function (reg,res){
-	var new_pullUp= new PullUps(req.body);
+exports.submit_PullUps = function (req,res){
+	var new_pullUp= new PullUps();
+	console.log(req.body)
+	new_pullUp.jon = req.body.jon;
+	new_pullUp.paul = req.body.paul;
+	new_pullUp.brandon = req.body.brandon;
+	new_pullUp.date = req.body.date;
 	new_pullUp.save()
 		.then(item=>{
 			res.send("item saved to database")
