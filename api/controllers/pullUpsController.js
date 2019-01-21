@@ -26,6 +26,15 @@ exports.submit_PullUps = function (req,res){
 		});
 };
 
+exports.update_PullUps = function (req, res){
+	var date=parseInt(req.params.date);
+	var updatedPullUps=req.body;
+		if (PullUps.date===date){
+			PullUps=updatedPullUps;
+			console.log("item saved to database")
+		}
+}
+
 // exports.create_a_pullUp = function(req, res) {
 //   var new_task = new Task(req.body);
 //   new_task.save(function(err, data) {

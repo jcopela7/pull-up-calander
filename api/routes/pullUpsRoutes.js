@@ -6,6 +6,7 @@ module.exports = function(app) {
   app.route('/PullUps')
     .get(pullUpsList.list_all_PullUps)
   	.post(pullUpsList.submit_PullUps)
+  	.put(pullUpsList.update_PullUps)
     //.post(pullUpsList.create_a_task);
 
 
