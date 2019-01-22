@@ -6,7 +6,7 @@ import Table from './Table';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state={name:"Jon", date: "Jan 18", pullUps:"0"}
+    this.state={name:"Jon"}
   }
 
   render() {
