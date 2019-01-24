@@ -1,12 +1,11 @@
 #form{
-	margin-left: 147px;
-	margin-right: 147px;
+
 	padding-top: 20px;
 	padding-bottom: 20px;
-	padding-left: 200px;
-	padding-right: 200px;
+	padding-left: 400px;
+	padding-right: 400px;
 
-	background: #75a7ea;
+	background: #dbe7f9;
   	text-align: left;
 }
 
@@ -15,10 +14,11 @@ label{
 }
 
 input{
-	width:100%;
+	min-width:200px;
 }
 
 input[type=number]{
+	width: 100%;
 	padding: 12px 20px;
 	margin: 8px 0;
 	box-sizing: border-box;
@@ -27,21 +27,22 @@ input[type=number]{
 }
 
 input[type=submit]{
+	width:20%;
 	padding: 12px 20px;
 	margin: 8px 0;
 	box-sizing: border-box;
 	border-radius: 25px;
 	background-color: #18386d;
 	color: white;
-	font-family: "Source Sans Pro", "Arial", sans-serif;
+
 }
 
 select {
 	width: 100%;
+	min-width: 200px;
 	padding: 12px 20px;
 	margin: 8px 0;
 	box-sizing: border-box;
 	box-shadow: 2px 5px #4286f4;
 	border-radius: 25px;	
-	font-family: "Source Sans Pro", "Arial", sans-serif;
 }

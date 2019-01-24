@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>{this.state.name}</h1>
+        <h1 id="welcome">{this.state.name}</h1>
         <PullUpForm/>
         <Table/>
       </div>

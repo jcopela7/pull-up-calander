@@ -68,7 +68,15 @@ class Table extends Component{
 			},
 			{
 				Header:'Jon',
-				accessor: 'jon',
+				id: 'jon',
+				accessor: d => {
+					if (d.jon===0){
+						return("R.C")
+					}
+					else{
+						return(d.jon)
+					}
+				},
 				Footer:(
 					<span>
 					<strong> Total: </strong> {sum[0]}
@@ -77,7 +85,15 @@ class Table extends Component{
 			},
 			{
 				Header:'Brandon',
-				accessor: 'brandon',
+				id: 'brandon',
+				accessor: d => {
+					if (d.brandon===0){
+						return("R.C")
+					}
+					else{
+						return(d.brandon)
+					}
+				},
 				Footer:(
 					<span>
 					<strong> Total: </strong> {sum[1]}
@@ -86,7 +102,15 @@ class Table extends Component{
 			},
 			{
 				Header:'Paul',
-				accessor: 'paul',
+				id: 'paul',
+				accessor: d => {
+					if (d.paul===0){
+						return("R.C")
+					}
+					else{
+						return(d.paul)
+					}
+				},
 				Footer:(
 					<span>
 					<strong> Total: </strong> {sum[2]}
@@ -94,7 +118,7 @@ class Table extends Component{
 					)
 			}
 			]}
-			defaultPageSize={30}
+			defaultPageSize={5}
 			className="-striped -highlight"
 			/>
 			

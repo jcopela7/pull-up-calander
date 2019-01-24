@@ -5,7 +5,7 @@ class PullUpForm extends Component{
 	constructor(props){
 		super(props);
 
-		this.state={pullUps:0, user:""};
+		this.state={pullUps:0, user:"jon"};
 
 		this.handlePullUpChange=this.handlePullUpChange.bind(this);
 		this.handleUserChange=this.handleUserChange.bind(this);

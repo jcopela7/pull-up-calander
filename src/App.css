@@ -30,3 +30,12 @@
     transform: rotate(360deg);
   }
 }
+
+#welcome{
+  background-color: #051630;
+  color:white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}

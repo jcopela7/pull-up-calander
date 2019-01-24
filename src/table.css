@@ -1,6 +1,11 @@
 .Table {
-  padding-top: 50px;
-  padding-left: 150px;
-  padding-right: 150px;
+	background-color: #dbe7f9;
+  	padding-top: 20px;
+  	padding-left: 250px;
+  	padding-right: 250px;
+  	padding-bottom: 50px;
 }
 
+.ReactTable{     
+	background-color: white; 
+}
