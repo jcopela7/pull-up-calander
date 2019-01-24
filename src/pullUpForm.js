@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './form.css';
 
 class PullUpForm extends Component{
 	constructor(props){
@@ -81,17 +82,23 @@ class PullUpForm extends Component{
 
 	render(){
 		return(
+			<div id = "form">
 			<form onSubmit={this.handleSubmit, this.submit_num}>
 		        <label>
-		          PullUps: 
+		          Pull-ups 
 		          <input type='number' value={this.state.PullUps} onChange={this.handlePullUpChange} />
 		        </label>
 		        <label>
-		        	user:
-		          <input type='text' name={this.state.user} onChange={this.handleUserChange}/>
+		        	User
 		        </label>
+		        <select name="user" onChange={this.handleUserChange}>
+		        	<option type='text' value="jon">Jon</option>
+		        	<option type='text' value="paul">Paul</option>
+		        	<option type='text' value="brandon">Brandon</option>
+		        </select>
 		        <input type="submit" value="Submit" />
 		    </form>
+		    </div>
 		)
 	};
 }
