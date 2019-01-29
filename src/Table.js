@@ -7,42 +7,12 @@ import Moment from 'moment';
 class Table extends Component{
 	constructor(props){
 		super(props);
-		this.state={
-			data: [{
-			date: "01-12-2019",
-			jon: 100,
-			brandon: 32,
-			paul: 34
-		},
-		{
-			date: "01-13-2019",
-			jon: 100,
-			brandon: 32,
-			paul: 34
-		},
-		{
-			date: "01-14-2019",
-			jon: 100,
-			brandon: 32,
-			paul: 34
-		}]
-		
-	};
-
 	}
 
-	componentDidMount(){
-		fetch("/PullUps")
-			.then(res => res.json())
-			.then((data) => {
-				this.setState({
-					data: data
-				});
-			});
-	}
+
 
 	render(){
-		const data =this.state.data;
+		const data =this.props.data;
 		
 		//calculate pull up sum
 		let sum=[0,0,0];
@@ -70,7 +40,7 @@ class Table extends Component{
 				Header:'Jon',
 				id: 'jon',
 				accessor: d => {
-					if (d.jon===0){
+					if (d.jon===-1){
 						return("R.C")
 					}
 					else{
@@ -87,7 +57,7 @@ class Table extends Component{
 				Header:'Brandon',
 				id: 'brandon',
 				accessor: d => {
-					if (d.brandon===0){
+					if (d.brandon===-1){
 						return("R.C")
 					}
 					else{
@@ -104,7 +74,7 @@ class Table extends Component{
 				Header:'Paul',
 				id: 'paul',
 				accessor: d => {
-					if (d.paul===0){
+					if (d.paul===-1){
 						return("R.C")
 					}
 					else{
@@ -118,7 +88,7 @@ class Table extends Component{
 					)
 			}
 			]}
-			defaultPageSize={5}
+			defaultPageSize={30}
 			className="-striped -highlight"
 			/>
 			

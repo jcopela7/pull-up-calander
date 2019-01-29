@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './form.css';
+import Table from './Table.js';
+import Moment from 'moment';
 
 class PullUpForm extends Component{
 	constructor(props){
@@ -14,57 +16,67 @@ class PullUpForm extends Component{
 	}
 
 	submit_num(){
-		if (this.state.user==="jon"){
-		fetch('/PullUps', {
-			method:'post',
-			headers:{
-			 	'Accept':'application/json',
-			 	'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				date: new Date(),
-				jon: this.state.pullUps,
-				brandon: 0,
-				paul:0
-			})
+		var todaysDate=new Date();
+		const data =this.props.data;
+
+		alert(data);
+
+		if(Moment(todaysDate).format("Do")!=Moment(data.date[data.length-1]).format("Do")){
+			if (this.state.user==="jon"){
+			fetch('/PullUps', {
+				method:'post',
+				headers:{
+				 	'Accept':'application/json',
+				 	'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					date: new Date(),
+					jon: this.state.pullUps,
+					brandon: 0,
+					paul:0
+				})
+				}
+			)
 			}
-		)
-		}
-		else if (this.state.user==="brandon"){
-		fetch('/PullUps', {
-			method:'post',
-			headers:{
-			 	'Accept':'application/json',
-			 	'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				date: new Date(),
-				jon: 0,
-				brandon: this.state.pullUps,
-				paul:0
-			})
+			else if (this.state.user==="brandon"){
+			fetch('/PullUps', {
+				method:'post',
+				headers:{
+				 	'Accept':'application/json',
+				 	'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					date: new Date(),
+					jon: 0,
+					brandon: this.state.pullUps,
+					paul:0
+				})
+				}
+			)
 			}
-		)
-		}
-		else if (this.state.user==="paul"){
-		fetch('/PullUps', {
-			method:'post',
-			headers:{
-			 	'Accept':'application/json',
-			 	'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				date: new Date(),
-				jon: 0,
-				brandon: 0,
-				paul:this.state.pullUps
-			})
+			else if (this.state.user==="paul"){
+			fetch('/PullUps', {
+				method:'post',
+				headers:{
+				 	'Accept':'application/json',
+				 	'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					date: new Date(),
+					jon: 0,
+					brandon: 0,
+					paul:this.state.pullUps
+				})
+				}
+			)
 			}
-		)
+			else{
+				alert("invalid user");
+			}
 		}
 		else{
-			alert("invalid user");
-		}
+			alert("It worked");
+		}	
 	}
 
 	handlePullUpChange(event){
@@ -81,6 +93,7 @@ class PullUpForm extends Component{
 	}
 
 	render(){
+
 		return(
 			<div id = "form">
 			<form onSubmit={this.handleSubmit, this.submit_num}>
@@ -97,7 +110,7 @@ class PullUpForm extends Component{
 		        	<option type='text' value="brandon">Brandon</option>
 		        </select>
 		        <input type="submit" value="Submit" />
-		    </form>
+		    </form>	   
 		    </div>
 		)
 	};
