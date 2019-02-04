@@ -42,7 +42,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1 id="welcome">Lets get this bread!!!</h1>
-        <PullUpForm data={this.state.data.date}/>
+        <PullUpForm data={this.state.data}/>
         <Table data={this.state.data}/>
       </div>
     );

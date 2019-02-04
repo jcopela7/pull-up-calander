@@ -9,6 +9,7 @@ module.exports = function(app) {
     //.post(pullUpsList.create_a_task);
 
   app.route('/PullUps/:_id')
+    .get(pullUpsList.get_todays_date)
   	.put(pullUpsList.update_PullUps)
   // app.route('/PullUps/:PullUpsId')
   //   .get(pullUpsList.read_a_task)

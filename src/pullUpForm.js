@@ -7,7 +7,7 @@ class PullUpForm extends Component{
 	constructor(props){
 		super(props);
 
-		this.state={pullUps:0, user:"jon"};
+		this.state={pullUps:0, user:"jon", id:""};
 
 		this.handlePullUpChange=this.handlePullUpChange.bind(this);
 		this.handleUserChange=this.handleUserChange.bind(this);
@@ -15,80 +15,118 @@ class PullUpForm extends Component{
 		this.submit_num=this.submit_num.bind(this);
 	}
 
-	// submit_num(){
-	// 	var todaysDate=new Date();
-	// 	const data =this.props.data;
-
-	// 	alert(data);
-
-	// 	if(Moment(todaysDate).format("DD")!=Moment(data.date).format("DD")){
-	// 		if (this.state.user==="jon"){
-	// 		fetch('/PullUps', {
-	// 			method:'post',
-	// 			headers:{
-	// 			 	'Accept':'application/json',
-	// 			 	'Content-Type': 'application/json',
-	// 			},
-	// 			body: JSON.stringify({
-	// 				date: new Date(),
-	// 				jon: this.state.pullUps,
-	// 				brandon: 0,
-	// 				paul:0
-	// 			})
-	// 			}
-	// 		)
-	// 		}
-	// 		else if (this.state.user==="brandon"){
-	// 		fetch('/PullUps', {
-	// 			method:'post',
-	// 			headers:{
-	// 			 	'Accept':'application/json',
-	// 			 	'Content-Type': 'application/json',
-	// 			},
-	// 			body: JSON.stringify({
-	// 				date: new Date(),
-	// 				jon: 0,
-	// 				brandon: this.state.pullUps,
-	// 				paul:0
-	// 			})
-	// 			}
-	// 		)
-	// 		}
-	// 		else if (this.state.user==="paul"){
-	// 		fetch('/PullUps', {
-	// 			method:'post',
-	// 			headers:{
-	// 			 	'Accept':'application/json',
-	// 			 	'Content-Type': 'application/json',
-	// 			},
-	// 			body: JSON.stringify({
-	// 				date: new Date(),
-	// 				jon: 0,
-	// 				brandon: 0,
-	// 				paul:this.state.pullUps
-	// 			})
-	// 			}
-	// 		)
-	// 		}
-	// 		else{
-	// 			alert("invalid user");
-	// 		}
-	// 	}
-	// 	else{
-	// 		alert("It worked");
-	// 	}	
-	// }
-
 	submit_num(){
 		var todaysDate=new Date();
-		const data =this.props.data;
+		const info =this.props.data;
 
-		if(Moment(todaysDate).format("DD")===Moment(data.date).format("DD")){
-			alert("It worked");
+		if(Moment(todaysDate).format("DD")!=Moment(info[info.length-1].date).format("DD")){
+			alert("yessss");
+			if (this.state.user==="jon"){
+			fetch('/PullUps', {
+				method:'post',
+				headers:{
+				 	'Accept':'application/json',
+				 	'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					date: new Date(),
+					jon: this.state.pullUps,
+					brandon: 0,
+					paul:0
+				})
+				}
+			)
+			}
+			else if (this.state.user==="brandon"){
+			fetch('/PullUps', {
+				method:'post',
+				headers:{
+				 	'Accept':'application/json',
+				 	'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					date: new Date(),
+					jon: 0,
+					brandon: this.state.pullUps,
+					paul:0
+				})
+				}
+			)
+			}
+			else if (this.state.user==="paul"){
+			fetch('/PullUps', {
+				method:'post',
+				headers:{
+				 	'Accept':'application/json',
+				 	'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					date: new Date(),
+					jon: 0,
+					brandon: 0,
+					paul:this.state.pullUps
+				})
+				}
+			)
+			}
+			else{
+				alert("invalid user");
+			}
 		}
 		else{
-			alert("It didnt");
-		}
+			fetch("/PullUps/:_id")
+	      		.then(res => res.json())
+	      		.then((data) => {
+	        	this.setState({
+	          		id: data
+	        	});
+	        });
+      	
+
+			if (this.state.user==="jon"){
+			fetch('/PullUps/:_id', {
+				method:'put',
+				headers:{
+				 	'Accept':'application/json',
+				 	'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					jon: this.state.pullUps,
+				})
+				}
+			)
+			}
+			else if (this.state.user==="brandon"){
+			fetch('/PullUps/:_id', {
+				method:'put',
+				headers:{
+				 	'Accept':'application/json',
+				 	'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					brandon: this.state.pullUps,
+				})
+				}
+			)
+			}
+			else if (this.state.user==="paul"){
+			fetch('/PullUps/:_id', {
+				method:'put',
+				headers:{
+				 	'Accept':'application/json',
+				 	'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					paul: this.state.pullUps,
+				})
+				}
+			)
+			}
+			else{
+				alert("didnt work");
+			}
+			
+		}	
 	}
 
 	handlePullUpChange(event){
@@ -108,7 +146,7 @@ class PullUpForm extends Component{
 
 		var todaysDate=new Date();
 		const info =this.props.data;
-
+		console.log(info)
 		return(
 			<div id = "form">
 			<form onSubmit={this.handleSubmit, this.submit_num}>
@@ -126,8 +164,13 @@ class PullUpForm extends Component{
 		        </select>
 		        <input type="submit" value="Submit" />
 		    </form>
-		    <h1>{Moment(todaysDate).format("DD")}</h1>
-		    	   
+		    <h1>{Moment(todaysDate).format("DD MM")}</h1>
+		    <h1>{
+		    	!!info ?
+		    		Moment(info[info.length-1].date).format("DD MM")
+		    	:
+		    	""
+		    }</h1>	   
 		    </div>
 		)
 	};

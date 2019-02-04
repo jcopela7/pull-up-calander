@@ -13,6 +13,18 @@ exports.list_all_PullUps = function(req, res) {
   });
 };
 
+exports.get_todays_date = function(req,res){
+	var todaysDate=new Date();
+
+	PullUps.find({'date':todaysDate}, '_id', function(err,data){
+		if (err)
+			res.send(err);
+		console.log(data);
+		res.json(data);	
+		});
+
+};
+
 exports.submit_PullUps = function (req,res){
 	var new_pullUp= new PullUps();
 	console.log(req.body)
