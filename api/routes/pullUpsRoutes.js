@@ -6,10 +6,10 @@ module.exports = function(app) {
   app.route('/PullUps')
     .get(pullUpsList.list_all_PullUps)
   	.post(pullUpsList.submit_PullUps)
-  	.put(pullUpsList.update_PullUps)
     //.post(pullUpsList.create_a_task);
 
-
+  app.route('/PullUps/:_id')
+  	.put(pullUpsList.update_PullUps)
   // app.route('/PullUps/:PullUpsId')
   //   .get(pullUpsList.read_a_task)
   //   .put(pullUpsList.update_a_task)

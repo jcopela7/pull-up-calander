@@ -27,12 +27,14 @@ exports.submit_PullUps = function (req,res){
 };
 
 exports.update_PullUps = function (req, res){
-	var date=parseInt(req.params.date);
-	var updatedPullUps=req.body;
-		if (PullUps.date===date){
-			PullUps=updatedPullUps;
-			console.log("item saved to database")
-		}
+	console.log(req.body);
+	PullUps.findByIdAndUpdate(req.params._id, req.body, { new: true }, function(err, model) {
+		if (err) {
+			res.json(err);
+		  } else {
+			res.json(model);
+		  }
+	})
 }
 
 // exports.create_a_pullUp = function(req, res) {
