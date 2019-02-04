@@ -127,7 +127,7 @@ class PullUpForm extends Component{
 		        <input type="submit" value="Submit" />
 		    </form>
 		    <h1>{Moment(todaysDate).format("DD")}</h1>
-		    <h1>{Moment(info[info.length-1]).format("DD")}</h1>	   
+		    	   
 		    </div>
 		)
 	};
